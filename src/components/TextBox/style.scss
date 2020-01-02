@@ -1,0 +1,51 @@
+$baseColor: #d6ffa0;
+$textBoxSize: 180px;
+
+.TextBox {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  height: 33.3333%;
+  width: 33.3333%;
+  text-align: center;
+}
+.boxPos0 {
+  left: 0;
+  top: 0;
+}
+.boxPos1 {
+  left: 33.3333%;
+  top: 0;
+}
+.boxPos2 {
+  left: 66.6666%;
+  top: 0
+}
+.boxPos3 {
+  left: 0;
+  top: 33.3333%;
+}
+.boxPos4 {
+  left: 33.3333%;
+  top: 33.3333%;
+}
+.boxPos5 {
+  left: 66.6666%;
+  top: 33.3333%;
+}
+.boxPos6 {
+  left: 0;
+  top: 66.6666%;
+}
+.boxPos7 {
+  left: 33.3333%;
+  top: 66.6666%;
+}
+.boxPos8 {
+  left: 66.6666%;
+  top: 66.6666%;
+}
+
+@keyframes pop{
+  50%  {transform: scale(0.8);}
+}

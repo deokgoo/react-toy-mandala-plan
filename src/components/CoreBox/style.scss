@@ -1,0 +1,49 @@
+$baseColor: #d6ffa0;
+$boxSize: 180px;
+
+.CoreBox {
+  height: $boxSize;
+  width: $boxSize;
+  border: 2px solid black;
+  position: absolute;
+}
+.coreBoxPos0 {
+  margin-top: 0;
+  margin-left: 0;
+}
+.coreBoxPos1 {
+  margin-top: 0;
+  margin-left: $boxSize;
+}
+.coreBoxPos2 {
+  margin-top: 0;
+  margin-left: $boxSize*2;
+}
+.coreBoxPos3 {
+  margin-top: $boxSize;
+  margin-left: 0;
+}
+.coreBoxPos4 {
+  margin-top: $boxSize;
+  margin-left: $boxSize;
+}
+.coreBoxPos5 {
+  margin-top: $boxSize;
+  margin-left: $boxSize*2;
+}
+.coreBoxPos6 {
+  margin-top: $boxSize*2;
+  margin-left: 0;
+}
+.coreBoxPos7 {
+  margin-top: $boxSize*2;
+  margin-left: $boxSize;
+}
+.coreBoxPos8 {
+  margin-top: $boxSize*2;
+  margin-left: $boxSize*2;
+}
+
+@keyframes pop{
+  50%  {transform: scale(0.8);}
+}
