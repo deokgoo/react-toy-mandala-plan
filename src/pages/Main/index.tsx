@@ -28,7 +28,7 @@ class MainPage extends React.Component<propsInterface, stateInterface> {
   render(): JSX.Element {
     return (
       <div id="stageContainer">
-        <CoreBox  boxNum={4}></CoreBox>
+        <CoreBox  boxNum={2} coreBoxHandler={}></CoreBox>
       </div>
     );
   }
