@@ -17,11 +17,12 @@ interface propsInterface {
 class CoreBox extends Component<propsInterface, stateInterface> {
   constructor(props: propsInterface) {
     super(props);
+    console.log("somegthing")
   }
 
-  handleTextChange = (e: React.FormEvent<HTMLInputElement>) => {
-    //TODO : textChange : if that box is core
-  };
+  // handleTextChange = (e: React.FormEvent<HTMLInputElement>) => {
+  //   //TODO : textChange : if that box is core
+  // };
 
   SideBox = () => {
     return(

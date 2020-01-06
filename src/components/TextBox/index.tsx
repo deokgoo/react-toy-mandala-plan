@@ -16,7 +16,7 @@ class CoreBox extends Component<propsInterface, stateInterface> {
   constructor(props: propsInterface) {
     super(props);
     this.state = {
-      boxText: 'test',
+      boxText: this.props.coreText,
       visible: false,
     }
   }
