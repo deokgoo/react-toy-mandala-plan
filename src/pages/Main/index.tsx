@@ -28,7 +28,15 @@ class MainPage extends React.Component<propsInterface, stateInterface> {
   render(): JSX.Element {
     return (
       <div id="stageContainer">
+        <CoreBox  boxNum={0} coreBoxHandler={()=>{}}></CoreBox>
+        <CoreBox  boxNum={1} coreBoxHandler={()=>{}}></CoreBox>
         <CoreBox  boxNum={2} coreBoxHandler={()=>{}}></CoreBox>
+        <CoreBox  boxNum={3} coreBoxHandler={()=>{}}></CoreBox>
+        <CoreBox  boxNum={4} coreBoxHandler={()=>{}}></CoreBox>
+        <CoreBox  boxNum={5} coreBoxHandler={()=>{}}></CoreBox>
+        <CoreBox  boxNum={6} coreBoxHandler={()=>{}}></CoreBox>
+        <CoreBox  boxNum={7} coreBoxHandler={()=>{}}></CoreBox>
+        <CoreBox  boxNum={8} coreBoxHandler={()=>{}}></CoreBox>
       </div>
     );
   }

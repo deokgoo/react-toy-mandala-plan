@@ -6,6 +6,7 @@ $boxSize: 180px;
   width: $boxSize;
   border: 2px solid black;
   position: absolute;
+  animation: pop;
 }
 .coreBoxPos0 {
   margin-top: 0;

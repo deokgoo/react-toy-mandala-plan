@@ -9,6 +9,7 @@ interface stateInterface {
 interface propsInterface {
   boxNum: number,
   coreText: string,
+  color: string,
 }
 
 
@@ -17,13 +18,13 @@ class CoreBox extends Component<propsInterface, stateInterface> {
     super(props);
     this.state = {
       boxText: this.props.coreText,
-      visible: false,
+      visible: false
     }
   }
 
   render(): JSX.Element {
     return (
-      <input className={`TextBox bg-primary boxPos${this.props.boxNum}`} key={"test"} value={this.state.boxText} />
+      <input className={`TextBox bg-${this.props.color} boxPos${this.props.boxNum}`} key={"test"} value={this.state.boxText}/>
     );
   }
 }
