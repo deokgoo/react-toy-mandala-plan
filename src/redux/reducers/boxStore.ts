@@ -1,43 +1,45 @@
-import { ADD_TODO, TOGGLE_TODO } from "../actionTypes";
+import { UPDATE_COLOR, UPDATE_TEXT } from "../actionTypes";
 import {Action, AnyAction} from "redux";
-
-interface stateInterface {
-  allIds: Array<number>,
-  byIds: any,
-}
+import {color, stateInterface} from "./boxStoreType";
 
 const initialState:stateInterface = {
-  allIds: [],
-  byIds: {}
+  boxColors: [
+    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.gray, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+  ],
+  boxTests: [
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+  ],
 };
 
 export default (state = initialState, action: AnyAction) => {
   switch (action.type) {
-    case ADD_TODO: {
-      const { id, content } = action.payload;
+    case UPDATE_COLOR: {
+      const { color, row, col } = action.payload;
+      state.boxColors[row][col] = color;
       return {
-        ...state,
-        allIds: [...state.allIds, id],
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            content,
-            completed: false
-          }
-        }
+        ...state
       };
     }
-    case TOGGLE_TODO: {
-      const { id } = action.payload;
+    case UPDATE_TEXT: {
+      const { content, row, col } = action.payload;
       return {
         ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed
-          }
-        }
       };
     }
     default:

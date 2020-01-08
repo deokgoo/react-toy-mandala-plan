@@ -9,8 +9,7 @@ interface stateInterface {
 }
 
 interface propsInterface {
-  boxNum: number,
-  coreBoxHandler: (boxNum: number) => void
+  boxNum: number
 }
 
 
