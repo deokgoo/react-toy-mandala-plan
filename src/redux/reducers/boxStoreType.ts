@@ -8,5 +8,6 @@ export enum color {
 
 export interface stateInterface {
   boxColors: Array<Array<color>>,
+  textColors: Array<Array<color>>,
   boxTests: Array<Array<string>>,
 }

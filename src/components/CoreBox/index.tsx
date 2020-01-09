@@ -16,7 +16,6 @@ interface propsInterface {
 class CoreBox extends Component<propsInterface, stateInterface> {
   constructor(props: propsInterface) {
     super(props);
-    console.log("somegthing")
   }
 
   // handleTextChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -26,15 +25,15 @@ class CoreBox extends Component<propsInterface, stateInterface> {
   SideBox = () => {
     return(
         <div>
-          <TextBox  boxNum={0} coreText={"something"} color={"danger"}></TextBox>
-          <TextBox  boxNum={1} coreText={"something"} color={"danger"}></TextBox>
-          <TextBox  boxNum={2} coreText={"something"} color={"danger"}></TextBox>
-          <TextBox  boxNum={3} coreText={"something"} color={"danger"}></TextBox>
-          <TextBox  boxNum={4} coreText={"core"} color={"info"}></TextBox>
-          <TextBox  boxNum={5} coreText={"something"} color={"danger"}></TextBox>
-          <TextBox  boxNum={6} coreText={"something"} color={"danger"}></TextBox>
-          <TextBox  boxNum={7} coreText={"something"} color={"danger"}></TextBox>
-          <TextBox  boxNum={8} coreText={"something"} color={"danger"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={0} col={0} coreText={"something"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={0} col={1} coreText={"something"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={0} col={2} coreText={"something"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={1} col={0} coreText={"something"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={1} col={1} coreText={"core"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={1} col={2} coreText={"something"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={2} col={0} coreText={"something"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={2} col={1} coreText={"something"}></TextBox>
+          <TextBox boxNum={this.props.boxNum} row={2} col={2} coreText={"something"}></TextBox>
         </div>
     )
   };

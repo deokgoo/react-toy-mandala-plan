@@ -8,11 +8,22 @@ const initialState:stateInterface = {
     [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
     [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
     [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.gray, color.white, color.white, color.white, color.white],
+    [color.white, color.white, color.white, color.white, color.red, color.white, color.white, color.white, color.white],
     [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
     [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
     [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
     [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+  ],
+  textColors: [
+    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
+    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
+    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
+    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
+    [color.black, color.black, color.black, color.black, color.white, color.black, color.black, color.black, color.black],
+    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
+    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
+    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
+    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
   ],
   boxTests: [
     ['', '', '', '', '', '', '', '', ''],
@@ -37,7 +48,7 @@ export default (state = initialState, action: AnyAction) => {
       };
     }
     case UPDATE_TEXT: {
-      const { content, row, col } = action.payload;
+      // const { content, row, col } = action.payload;
       return {
         ...state,
       };

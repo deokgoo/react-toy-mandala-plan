@@ -1,5 +1,7 @@
 import {color, stateInterface} from "./reducers/boxStoreType";
 
-export const getBoxColorList = (store: stateInterface) => store.boxColors;
+export const getBoxColorList = (state: stateInterface) => state.boxColors;
 
-export const getBoxTextList = (store: stateInterface) => store.boxTests;
+export const getTextColorList = (state: stateInterface) => state.textColors;
+
+export const getBoxTextList = (state: stateInterface) => state.boxTests;
