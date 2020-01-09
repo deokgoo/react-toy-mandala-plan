@@ -8,6 +8,9 @@ $textBoxSize: 180px;
   height: 33.3333%;
   width: 33.3333%;
   text-align: center;
+  line-height: 100%;
+  vertical-align: middle;
+  display: flex;
   animation: 1s pop;
 }
 .boxPos0 {
@@ -49,4 +52,8 @@ $textBoxSize: 180px;
 
 @keyframes pop{
   50%  {transform: scale(0.8);}
+}
+
+.textContent {
+  margin: auto;
 }
