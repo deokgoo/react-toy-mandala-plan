@@ -3,34 +3,54 @@ import {Action, AnyAction} from "redux";
 import {color, stateInterface} from "./boxStoreType";
 
 const initialState:stateInterface = {
-  boxColors: [
-    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.red, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
-    [color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white, color.white],
+  sideBoxColors: [
+    color.green,
+    color.blue,
+    color.red,
+    color.yellow,
+    color.green,
+    color.sora,
+    color.blue,
+    color.yellow,
   ],
-  textColors: [
-    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
-    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
-    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
-    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
-    [color.black, color.black, color.black, color.black, color.white, color.black, color.black, color.black, color.black],
-    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
-    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
-    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
-    [color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black, color.black],
+  coreBoxColors: [
+    color.red,
+    color.white,
+    color.white,
+    color.white,
+    color.gray,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
   ],
-  boxTests: [
+  sideBoxTextColors: [
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+  ],
+  coreBoxTextColors: [
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+  ],
+  boxTexts: [
+    ['hi', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', 'test', '', '', '', ''],
+    ['test!!!', '', '', '', 'test', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
@@ -42,7 +62,7 @@ export default (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case UPDATE_COLOR: {
       const { color, row, col } = action.payload;
-      state.boxColors[row][col] = color;
+      // state.sideBoxColors[row][col] = color;
       return {
         ...state
       };

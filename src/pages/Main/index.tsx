@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 import CoreBox from '../../components/CoreBox'
+import SideBox from "../../components/SideBox";
 
 interface stateInterface {
   map: Array<number>
@@ -28,15 +29,15 @@ class MainPage extends React.Component<propsInterface, stateInterface> {
   render(): JSX.Element {
     return (
       <div id="stageContainer">
-        <CoreBox  boxNum={0}></CoreBox>
-        <CoreBox  boxNum={1}></CoreBox>
-        <CoreBox  boxNum={2}></CoreBox>
-        <CoreBox  boxNum={3}></CoreBox>
+        <SideBox boxNum={0}></SideBox>
+        <SideBox boxNum={1}></SideBox>
+        <SideBox boxNum={2}></SideBox>
+        <SideBox boxNum={3}></SideBox>
         <CoreBox  boxNum={4}></CoreBox>
-        <CoreBox  boxNum={5}></CoreBox>
-        <CoreBox  boxNum={6}></CoreBox>
-        <CoreBox  boxNum={7}></CoreBox>
-        <CoreBox  boxNum={8}></CoreBox>
+        <SideBox boxNum={5}></SideBox>
+        <SideBox boxNum={6}></SideBox>
+        <SideBox boxNum={7}></SideBox>
+        <SideBox boxNum={8}></SideBox>
       </div>
     );
   }
