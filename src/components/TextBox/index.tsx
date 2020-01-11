@@ -1,6 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './style.scss'
-import {color} from '../../redux/reducers/boxStoreType';
+import { color } from '../../redux/boxStore/reducer/type';
+import { updateBoxSelector } from "../../redux/settingStore/action";
+import { connect } from 'react-redux'
+import {getBoxSelector} from "../../redux/settingStore/selector";
 
 interface stateInterface {
   boxText: string,
@@ -10,29 +13,53 @@ interface stateInterface {
 interface propsInterface {
   row: number,
   col: number,
+  boxNum: number,
   boxText: string,
   boxTextColor: color,
   boxColor: color,
 }
 
-class TextBox extends Component<propsInterface, stateInterface> {
-  constructor(props: propsInterface) {
+interface propActions {
+  updateBoxSelecter?: (data: {boxNum:number , row: number, col: number}) => void
+  boxSelector?: any
+}
+
+class TextBox extends Component<propsInterface & propActions, stateInterface> {
+  constructor(props: propsInterface & propActions) {
     super(props);
+    const {boxNum, row, col} = this.props;
+    const {boxSelector} = this.props;
     this.state = {
       boxText: this.props.boxText,
-      visible: false
+      visible: false,
     }
   }
-
+  isSelected = ():boolean => {
+    const { boxNum, row, col } = this.props;
+    const { boxSelector } = this.props;
+    return boxNum === boxSelector.boxNum && row === boxSelector.row && col === boxSelector.col
+  }
   render(): JSX.Element {
     let { boxText, boxColor, boxTextColor} = this.props;
-    const boxPos = this.props.row*3+this.props.col;
+    let { row, col } = this.props;
+    let { boxNum } = this.props;
+
+    const boxPos = row*3 + col;
     return (
-      <div className={`TextBox boxPos${boxPos} bg-${boxColor} text-${boxTextColor}`} key={"test"}>
+      <div className={`TextBox boxPos${boxPos} bg-${boxColor} text-${boxTextColor}`+(this.isSelected()?" selectedBox":"")} key={"test"} onClick={()=>{if(this.props.updateBoxSelecter) this.props.updateBoxSelecter({boxNum, row, col});}}>
         <div className={`textContent`}> {boxText} </div>
       </div>
     );
   }
 }
 
-export default TextBox;
+const mapStateToProps = (state: any) => {
+  const boxSelector = getBoxSelector(state.settingStore);
+
+  return { boxSelector };
+};
+
+export default connect<{}, propActions, propsInterface>(
+  mapStateToProps,
+  { updateBoxSelecter: updateBoxSelector }
+)(TextBox);

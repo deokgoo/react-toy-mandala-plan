@@ -1,7 +1,8 @@
 import React from 'react';
 import './style.scss';
 import CoreBox from '../../components/CoreBox'
-import SideBox from "../../components/SideBox";
+import SideBox from '../../components/SideBox';
+import { connect } from 'react-redux';
 
 interface stateInterface {
   map: Array<number>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import TextBox from '../TextBox';
-import { getCoreBoxColorList, getCoreTextColorList, getBoxTextList } from '../../redux/selector'
+import { getCoreBoxColorList, getCoreTextColorList, getBoxTextList } from '../../redux/boxStore/selector'
 import { connect } from "react-redux";
 import './style.scss'
-import { color } from '../../redux/reducers/boxStoreType';
+import { color } from '../../redux/boxStore/reducer/type';
 
 interface stateInterface {
   coreText: string,
@@ -31,17 +31,17 @@ class CoreBox extends Component<propsInterface, stateInterface> {
 
     const elements = [];
     let { textColors, boxColors, textContent, boxNum } = this.props;
-    for (var i=0;i<3;i++){
-      for(var j=0;j<3;j++){
+    for (let i=0;i<3;i++){
+      for(let j=0;j<3;j++){
         elements.push(
           <TextBox
+            boxNum={this.props.boxNum}
             row={i}
             col={j}
             boxTextColor={textColors[i*3+j]}
             boxColor={boxColors[i*3+j]}
             boxText={textContent[boxNum][i*3+j]}
-            key={i*3+j}>
-          </TextBox>
+            key={i*3 + j} />
         )
       }
     }

@@ -1,76 +1,25 @@
-import { UPDATE_COLOR, UPDATE_TEXT } from "../../boxStore/action/type";
-import {Action, AnyAction} from "redux";
-import {color, stateInterface} from "../../boxStore/reducer/type";
+import { AnyAction } from 'redux';
+import { UPDATE_BOXSELECTOR } from '../action/type'
+import { selectInterface } from './type';
 
-const initialState:stateInterface = {
-  sideBoxColors: [
-    color.green,
-    color.blue,
-    color.red,
-    color.yellow,
-    color.green,
-    color.sora,
-    color.blue,
-    color.yellow,
-  ],
-  coreBoxColors: [
-    color.red,
-    color.white,
-    color.white,
-    color.white,
-    color.gray,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-  ],
-  sideBoxTextColors: [
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-  ],
-  coreBoxTextColors: [
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-  ],
-  boxTexts: [
-    ['hi', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['test!!!', '', '', '', 'test', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-  ],
+const initialState:selectInterface = {
+  boxNum: 0,
+  col: 0,
+  row: 0,
+  isSelect: true,
 };
 
 export default (state = initialState, action: AnyAction) => {
+
   switch (action.type) {
-    case UPDATE_COLOR: {
-      const { color, row, col } = action.payload;
-      // state.sideBoxColors[row][col] = color;
+    case UPDATE_BOXSELECTOR: {
+      const { boxNum, row, col, isSelect } = action.payload;
+      console.log(action.payload);
       return {
-        ...state
-      };
-    }
-    case UPDATE_TEXT: {
-      // const { content, row, col } = action.payload;
-      return {
-        ...state,
+        boxNum,
+        row,
+        col,
+        isSelect
       };
     }
     default:

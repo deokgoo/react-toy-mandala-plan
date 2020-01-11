@@ -1,3 +1,3 @@
-import { selectInterface } from "./reducer/type";
+import { selectInterface } from './reducer/type';
 
-export const selectBox:(state: any)=>any = (state: selectInterface) => {state.boxNum, state.row, state.col};
+export const getBoxSelector = (state: selectInterface) => state;

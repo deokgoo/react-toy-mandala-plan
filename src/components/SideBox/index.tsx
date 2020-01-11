@@ -4,10 +4,10 @@ import {
   getBoxTextList, getCoreColor, getCoreText, getCoreTextColor,
   getSideBoxColorList,
   getSideTextColorList
-} from '../../redux/selector'
+} from '../../redux/boxStore/selector'
 import { connect } from "react-redux";
 import './style.scss'
-import { color } from '../../redux/reducers/boxStoreType';
+import { color } from '../../redux/boxStore/reducer/type';
 
 interface stateInterface {
   coreText: string,
@@ -29,7 +29,6 @@ interface propsInterface {
 class SideBox extends Component<propsInterface, stateInterface> {
   constructor(props: propsInterface) {
     super(props);
-    console.log(this.props.coreBoxColor)
   }
 
   BoxComponent = () => {
@@ -49,21 +48,21 @@ class SideBox extends Component<propsInterface, stateInterface> {
         elements.push(
             i*3+j===4 ?
           <TextBox
+            boxNum={this.props.boxNum}
             row={i}
             col={j}
             boxTextColor={coreTextColor}
             boxColor={coreBoxColor}
             boxText={coreText}
-            key={i*3+j}>
-          </TextBox> :
+            key={i*3+j} /> :
           <TextBox
-              row={i}
-              col={j}
-              boxTextColor={textColor}
-              boxColor={boxColors}
-              boxText={textContent[boxNum][i*3+j]}
-              key={i*3+j}>
-          </TextBox>
+            boxNum={this.props.boxNum}
+            row={i}
+            col={j}
+            boxTextColor={textColor}
+            boxColor={boxColors}
+            boxText={textContent[boxNum][i*3+j]}
+            key={i*3+j} />
         )
       }
     }
@@ -88,7 +87,6 @@ const mapStateToProps = (state: any, ownProps: propsInterface) => {
   const coreTextColor = getCoreTextColor(state.boxStore, ownProps.boxNum);
   const coreBoxColor = getCoreColor(state.boxStore, ownProps.boxNum);
 
-  console.log({ boxColors, textColor, textContent, coreText, coreTextColor, coreBoxColor });
   return { boxColors, textColor, textContent, coreText, coreTextColor, coreBoxColor };
 };
 
