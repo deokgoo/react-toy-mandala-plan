@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TextBox from '../TextBox';
 import {
-  getBoxTextList, getCoreColor, getCoreText, getCoreTextColor,
+  getBoxAllText, getCoreColor, getCoreText, getCoreTextColor,
   getSideBoxColorList,
   getSideTextColorList
 } from '../../redux/boxStore/selector'
@@ -81,7 +81,7 @@ class SideBox extends Component<propsInterface, stateInterface> {
 const mapStateToProps = (state: any, ownProps: propsInterface) => {
   const boxColors = getSideBoxColorList(state.boxStore, ownProps.boxNum);
   const textColor = getSideTextColorList(state.boxStore, ownProps.boxNum);
-  const textContent = getBoxTextList(state.boxStore);
+  const textContent = getBoxAllText(state.boxStore);
 
   const coreText = getCoreText(state.boxStore, ownProps.boxNum);
   const coreTextColor = getCoreTextColor(state.boxStore, ownProps.boxNum);

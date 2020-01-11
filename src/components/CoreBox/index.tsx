@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TextBox from '../TextBox';
-import { getCoreBoxColorList, getCoreTextColorList, getBoxTextList } from '../../redux/boxStore/selector'
+import { getCoreBoxColorList, getCoreTextColorList, getBoxAllText } from '../../redux/boxStore/selector'
 import { connect } from "react-redux";
 import './style.scss'
 import { color } from '../../redux/boxStore/reducer/type';
@@ -60,7 +60,7 @@ class CoreBox extends Component<propsInterface, stateInterface> {
 const mapStateToProps = (state: any) => {
   const boxColors = getCoreBoxColorList(state.boxStore);
   const textColors = getCoreTextColorList(state.boxStore);
-  const textContent = getBoxTextList(state.boxStore);
+  const textContent = getBoxAllText(state.boxStore);
   return { boxColors, textColors, textContent };
 };
 

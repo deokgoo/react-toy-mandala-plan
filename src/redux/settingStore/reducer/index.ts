@@ -6,7 +6,7 @@ const initialState:selectInterface = {
   boxNum: 0,
   col: 0,
   row: 0,
-  isSelect: true,
+  isSelect: false,
 };
 
 export default (state = initialState, action: AnyAction) => {

@@ -32,4 +32,6 @@ export const getCoreTextColor = (state: stateInterface, boxNum: number) => {
   return coreBoxTextColors[boxNum];
 };
 
-export const getBoxTextList = (state: stateInterface) => state.boxTexts;
+export const getBoxAllText = (state: stateInterface) => state.boxTexts;
+
+export const getBoxText = (state: stateInterface, boxNum: number, num: number) => state.boxTexts[boxNum][num];
