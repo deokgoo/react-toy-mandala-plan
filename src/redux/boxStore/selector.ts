@@ -1,4 +1,4 @@
-import { stateInterface } from "./reducers/boxStoreType";
+import { stateInterface } from "./reducer/type";
 
 export const getCoreBoxColorList = (state: stateInterface) => state.coreBoxColors;
 

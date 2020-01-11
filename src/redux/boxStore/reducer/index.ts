@@ -1,6 +1,6 @@
-import { UPDATE_COLOR, UPDATE_TEXT } from "../actionTypes";
+import { UPDATE_COLOR, UPDATE_TEXT } from "../action/type";
 import {Action, AnyAction} from "redux";
-import {color, stateInterface} from "./boxStoreType";
+import {color, stateInterface} from "./type";
 
 const initialState:stateInterface = {
   sideBoxColors: [
