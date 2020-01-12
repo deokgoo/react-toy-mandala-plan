@@ -16,6 +16,13 @@ export const getSideTextColorList = (state: stateInterface, boxNum: number) => {
   return boxNum<4 ? sideBoxTextColors[boxNum] : sideBoxTextColors[boxNum-1];
 };
 
+export const getSelectBoxTextColor = (state: stateInterface) => {
+  let coreBoxTextColorList = state.coreBoxTextColors;
+  let sideBoxTextColorList = state.sideBoxTextColors;
+
+  return { coreBoxTextColorList, sideBoxTextColorList }
+}
+
 export const getCoreText = (state: stateInterface, boxNum: number) => {
   const { boxTexts } = state;
 

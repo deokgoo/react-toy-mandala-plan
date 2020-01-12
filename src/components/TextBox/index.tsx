@@ -20,7 +20,7 @@ interface propsInterface {
 }
 
 interface propActions {
-  updateBoxSelecter?: (data: {boxNum:number , row: number, col: number}) => void
+  updateBoxSelector?: (data: {boxNum:number , row: number, col: number}) => void
   boxSelector?: any
 }
 
@@ -46,7 +46,7 @@ class TextBox extends Component<propsInterface & propActions, stateInterface> {
 
     const boxPos = row*3 + col;
     return (
-      <div className={`TextBox boxPos${boxPos} bg-${boxColor} text-${boxTextColor}`+(this.isSelected()?" selectedBox":"")} key={"test"} onClick={()=>{if(this.props.updateBoxSelecter) this.props.updateBoxSelecter({boxNum, row, col});}}>
+      <div className={`TextBox boxPos${boxPos} bg-${boxColor} text-${boxTextColor}`+(this.isSelected()?" selectedBox":"")} key={"test"} onClick={()=>{if(this.props.updateBoxSelector) this.props.updateBoxSelector({boxNum, row, col});}}>
         <div className={`textContent`}> {boxText} </div>
       </div>
     );
@@ -61,5 +61,5 @@ const mapStateToProps = (state: any) => {
 
 export default connect<{}, propActions, propsInterface>(
   mapStateToProps,
-  { updateBoxSelecter: updateBoxSelector }
+  { updateBoxSelector }
 )(TextBox);
