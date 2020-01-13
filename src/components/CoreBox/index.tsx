@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import TextBox from '../TextBox';
 import { connect } from 'react-redux';
 import { mapStateToProps } from './connectMaps';
@@ -12,12 +12,12 @@ class CoreBox extends React.Component<propsInterface> {
     super(props);
   }
 
-  createTextBoxComponents = () => {
-    if(!this.props.textColors) return;
-    if(!this.props.sideBoxColors) return;
-    if(!this.props.textContents) return;
+  createTextBoxComponents():Array<ReactNode> {
+    if(!this.props.textColors) return [];
+    if(!this.props.sideBoxColors) return [];
+    if(!this.props.textContents) return [];
 
-    const elements = [];
+    const elements: Array<ReactNode> = [];
     let { textColors, sideBoxColors, textContents, boxNum } = this.props;
 
     for (let i=0;i<3;i++){

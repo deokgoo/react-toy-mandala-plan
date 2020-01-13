@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import TextBox from '../TextBox';
 import { connect} from 'react-redux';
 import { mapStateToProps} from './connectMaps';
@@ -11,18 +11,18 @@ class SideBox extends React.Component<propsInterface, stateInterface> {
   constructor(props: propsInterface) {
     super(props);
   }
-  createTextBoxComponents = () => {
-    if (!this.props.sideTextColor) return;
-    if (!this.props.sideBoxColors) return;
-    if (!this.props.allBoxTexts) return;
-    if (!this.props.coreBoxColor) return;
-    if (!this.props.coreTextColor) return;
-    if (this.props.coreText === undefined) return;
+  createTextBoxComponents(): Array<ReactNode> {
+    if (!this.props.sideTextColor) return [];
+    if (!this.props.sideBoxColors) return [];
+    if (!this.props.allBoxTexts) return [];
+    if (!this.props.coreBoxColor) return [];
+    if (!this.props.coreTextColor) return [];
+    if (this.props.coreText === undefined) return [];
 
     let { sideTextColor, sideBoxColors, allBoxTexts, boxNum } = this.props;
     let { coreBoxColor, coreTextColor, coreText } = this.props;
     const coreNumber = 4;
-    const elements = [];
+    const elements: Array<ReactNode> = [];
 
     const createTextBoxFromCore = (i: number, j: number) => <TextBox
                                     boxNum={boxNum}
