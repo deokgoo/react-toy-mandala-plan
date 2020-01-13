@@ -2,12 +2,15 @@ import React from 'react';
 import TextBox from '../TextBox';
 import { connect} from 'react-redux';
 import { mapStateToProps} from './connectMaps';
-import { basePropsInterface, connectStateInterface, stateInterface } from './types';
+import { basePropsInterface, mapStateToPropsInterface, stateInterface } from './types';
 import './style.scss'
 
-type propsInterface = basePropsInterface & connectStateInterface;
+type propsInterface = basePropsInterface & mapStateToPropsInterface;
 
 class SideBox extends React.Component<propsInterface, stateInterface> {
+  constructor(props: propsInterface) {
+    super(props);
+  }
   BoxComponent = () => {
     if (!this.props.sideTextColor) return;
     if (!this.props.sideBoxColors) return;
@@ -63,7 +66,7 @@ class SideBox extends React.Component<propsInterface, stateInterface> {
   }
 }
 
-export default connect<connectStateInterface, null, basePropsInterface>(
+export default connect<mapStateToPropsInterface, null, basePropsInterface>(
   mapStateToProps,
   null
 )(SideBox);

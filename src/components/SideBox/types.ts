@@ -6,7 +6,7 @@ export interface stateInterface {
   coreInCore: Boolean,
 }
 
-export interface connectStateInterface {
+export interface mapStateToPropsInterface {
   allBoxTexts?: Array<Array<string>>,
   sideTextColor?: color,
   sideBoxColors?: color,
@@ -15,6 +15,6 @@ export interface connectStateInterface {
   coreTextColor?: color,
 }
 
-export interface basePropsInterface extends connectStateInterface {
+export interface basePropsInterface extends mapStateToPropsInterface {
   boxNum: number,
 }

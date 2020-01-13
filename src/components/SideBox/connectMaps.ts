@@ -1,4 +1,4 @@
-import { basePropsInterface, connectStateInterface } from './types';
+import { basePropsInterface, mapStateToPropsInterface } from './types';
 import {
   getAllBoxText,
   getCoreColor,
@@ -8,7 +8,7 @@ import {
   getSideTextColorList
 } from '../../redux/boxStore/selector';
 
-export const mapStateToProps = (state: any, ownProps: basePropsInterface): connectStateInterface => {
+export const mapStateToProps = (state: any, ownProps: basePropsInterface): mapStateToPropsInterface => {
   const sideBoxColors = getSideBoxColorList(state.boxStore, ownProps.boxNum);
   const coreBoxColor = getCoreColor(state.boxStore, ownProps.boxNum);
   const sideTextColor = getSideTextColorList(state.boxStore, ownProps.boxNum);
