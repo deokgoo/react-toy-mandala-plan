@@ -1,11 +1,13 @@
 import { stateInterface } from "./reducer/type";
 
+const coreNumber = 4;
+
 export const getCoreBoxColorList = (state: stateInterface) => state.coreBoxColors;
 
 export const getSideBoxColorList = (state: stateInterface, boxNum: number) => {
   const { sideBoxColors } = state;
 
-  return boxNum<4 ? sideBoxColors[boxNum] : sideBoxColors[boxNum-1];
+  return boxNum<coreNumber ? sideBoxColors[boxNum] : sideBoxColors[boxNum-1];
 };
 
 export const getCoreTextColorList = (state: stateInterface) => state.coreBoxTextColors;
@@ -13,7 +15,7 @@ export const getCoreTextColorList = (state: stateInterface) => state.coreBoxText
 export const getSideTextColorList = (state: stateInterface, boxNum: number) => {
   const { sideBoxTextColors } = state;
 
-  return boxNum<4 ? sideBoxTextColors[boxNum] : sideBoxTextColors[boxNum-1];
+  return boxNum<coreNumber ? sideBoxTextColors[boxNum] : sideBoxTextColors[boxNum-1];
 };
 
 export const getSelectBoxTextColor = (state: stateInterface) => {
@@ -26,7 +28,7 @@ export const getSelectBoxTextColor = (state: stateInterface) => {
 export const getCoreText = (state: stateInterface, boxNum: number) => {
   const { boxTexts } = state;
 
-  return boxTexts[4][boxNum];
+  return boxTexts[coreNumber][boxNum];
 };
 
 export const getCoreColor = (state: stateInterface, boxNum: number) => {
@@ -39,6 +41,13 @@ export const getCoreTextColor = (state: stateInterface, boxNum: number) => {
   return coreBoxTextColors[boxNum];
 };
 
-export const getBoxAllText = (state: stateInterface) => state.boxTexts;
+export const getAllBoxText = (state: stateInterface) => state.boxTexts;
 
-export const getBoxText = (state: stateInterface, boxNum: number, num: number) => state.boxTexts[boxNum][num];
+export const getBoxText = (state: stateInterface, boxNum: number, insideNum: number) => {
+  const { boxTexts } = state;
+
+  if(boxNum!==coreNumber && insideNum===coreNumber)
+    return boxTexts[coreNumber][boxNum];
+  else
+    return boxTexts[boxNum][insideNum];
+};

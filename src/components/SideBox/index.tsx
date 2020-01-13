@@ -1,68 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TextBox from '../TextBox';
-import {
-  getBoxAllText, getCoreColor, getCoreText, getCoreTextColor,
-  getSideBoxColorList,
-  getSideTextColorList
-} from '../../redux/boxStore/selector'
-import { connect } from "react-redux";
+import { connect} from 'react-redux';
+import { mapStateToProps} from './connectMaps';
+import { basePropsInterface, connectStateInterface, stateInterface } from './types';
 import './style.scss'
-import { color } from '../../redux/boxStore/reducer/type';
 
-interface stateInterface {
-  coreText: string,
-  sideVisible: Boolean,
-  coreInCore: Boolean,
-}
+type propsInterface = basePropsInterface & connectStateInterface;
 
-interface propsInterface {
-  boxNum: number,
-  textContent?: Array<string>,
-  textColor?: color,
-  boxColors?: color,
-  coreText?: string,
-  coreTextColor?: color,
-  coreBoxColor?: color,
-}
-
-
-class SideBox extends Component<propsInterface, stateInterface> {
-  constructor(props: propsInterface) {
-    super(props);
-  }
-
+class SideBox extends React.Component<propsInterface, stateInterface> {
   BoxComponent = () => {
-    if(!this.props.textColor) return;
-    if(!this.props.boxColors) return;
-    if(!this.props.textContent) return;
-    if(!this.props.coreBoxColor) return;
-    if(!this.props.coreTextColor) return;
-    if(this.props.coreText===undefined) return;
+    if (!this.props.sideTextColor) return;
+    if (!this.props.sideBoxColors) return;
+    if (!this.props.allBoxTexts) return;
+    if (!this.props.coreBoxColor) return;
+    if (!this.props.coreTextColor) return;
+    if (this.props.coreText === undefined) return;
 
+    let { sideTextColor, sideBoxColors, allBoxTexts, boxNum } = this.props;
+    let { coreBoxColor, coreTextColor, coreText } = this.props;
     const elements = [];
-    let { textColor, boxColors, textContent, boxNum } = this.props;
-    let { coreBoxColor, coreTextColor, coreText} = this.props;
 
-    for (let i=0;i<3;i++){
-      for(let j=0;j<3;j++){
+    const createTextBoxFromCore = (i: number, j: number) => <TextBox
+                                    boxNum={boxNum}
+                                    row={i}
+                                    col={j}
+                                    boxTextColor={coreTextColor}
+                                    boxColor={coreBoxColor}
+                                    boxText={coreText}
+                                    key={i * 3 + j}
+                                  />;
+
+    const createTextBoxFromSideBox = (i: number, j: number) => <TextBox
+                                            boxNum={boxNum}
+                                            row={i}
+                                            col={j}
+                                            boxTextColor={sideTextColor}
+                                            boxColor={sideBoxColors}
+                                            boxText={allBoxTexts[boxNum][i * 3 + j]}
+                                            key={i * 3 + j}
+                                          />;
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
         elements.push(
-            i*3+j===4 ?
-          <TextBox
-            boxNum={this.props.boxNum}
-            row={i}
-            col={j}
-            boxTextColor={coreTextColor}
-            boxColor={coreBoxColor}
-            boxText={coreText}
-            key={i*3+j} /> :
-          <TextBox
-            boxNum={this.props.boxNum}
-            row={i}
-            col={j}
-            boxTextColor={textColor}
-            boxColor={boxColors}
-            boxText={textContent[boxNum][i*3+j]}
-            key={i*3+j} />
+          i*3+j === 4 ? createTextBoxFromCore(i, j) : createTextBoxFromSideBox(i, j)
         )
       }
     }
@@ -70,27 +51,17 @@ class SideBox extends Component<propsInterface, stateInterface> {
   };
 
   render(): JSX.Element {
+    const { boxNum } = this.props;
+
     return (
-      <div className={`CoreBox coreBoxPos${this.props.boxNum}`} >
-        {this.BoxComponent()}
+      <div className={`CoreBox coreBoxPos${boxNum}`}>
+        { this.BoxComponent() }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state: any, ownProps: propsInterface) => {
-  const boxColors = getSideBoxColorList(state.boxStore, ownProps.boxNum);
-  const textColor = getSideTextColorList(state.boxStore, ownProps.boxNum);
-  const textContent = getBoxAllText(state.boxStore);
-
-  const coreText = getCoreText(state.boxStore, ownProps.boxNum);
-  const coreTextColor = getCoreTextColor(state.boxStore, ownProps.boxNum);
-  const coreBoxColor = getCoreColor(state.boxStore, ownProps.boxNum);
-
-  return { boxColors, textColor, textContent, coreText, coreTextColor, coreBoxColor };
-};
-
-export default connect(
-    mapStateToProps,
-    null
+export default connect<connectStateInterface, null, basePropsInterface>(
+  mapStateToProps,
+  null
 )(SideBox);
