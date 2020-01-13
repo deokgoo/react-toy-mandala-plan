@@ -1,65 +1,56 @@
 import React, { Component } from 'react';
-import './style.scss'
-import { color } from '../../redux/boxStore/reducer/type';
-import { updateBoxSelector } from "../../redux/settingStore/action";
 import { connect } from 'react-redux'
-import {getBoxSelector} from "../../redux/settingStore/selector";
+import { mapDispaToProps, mapStateToProps } from './connectMaps';
+import { basePropsInterface, propsActions, stateInterface, } from "./types";
+import './style.scss'
 
-interface stateInterface {
-  boxText: string,
-  visible: boolean,
-}
+type propsInterface = basePropsInterface & propsActions;
 
-interface propsInterface {
-  row: number,
-  col: number,
-  boxNum: number,
-  boxText: string,
-  boxTextColor: color,
-  boxColor: color,
-}
+class TextBox extends Component<propsInterface, stateInterface> {
+  selectHandler() {
+    let { boxNum, row, col } = this.props;
 
-interface propActions {
-  updateBoxSelector?: (data: {boxNum:number , row: number, col: number}) => void
-  boxSelector?: any
-}
-
-class TextBox extends Component<propsInterface & propActions, stateInterface> {
-  constructor(props: propsInterface & propActions) {
-    super(props);
-    const {boxNum, row, col} = this.props;
-    const {boxSelector} = this.props;
-    this.state = {
-      boxText: this.props.boxText,
-      visible: false,
-    }
+    if(this.props.updateBoxSelector)
+      this.props.updateBoxSelector({
+        boxNum, row, col
+      });
   }
-  isSelected = ():boolean => {
+
+  isSelected(): boolean {
     const { boxNum, row, col } = this.props;
     const { boxSelector } = this.props;
+
     return boxNum === boxSelector.boxNum && row === boxSelector.row && col === boxSelector.col
   }
-  render(): JSX.Element {
-    let { boxText, boxColor, boxTextColor} = this.props;
-    let { row, col } = this.props;
-    let { boxNum } = this.props;
 
-    const boxPos = row*3 + col;
+  setClassName() {
+    let { boxColor, boxTextColor } = this.props;
+    let { row, col } = this.props;
+    const boxPos = row * 3 + col;
+    const preFix = 'TextBox';
+    let buildClassName = [];
+
+    buildClassName.push(preFix);
+    buildClassName.push(`boxPos${boxPos}`);
+    buildClassName.push(`bg-${boxColor}`);
+    buildClassName.push(`text-${boxTextColor}`);
+    buildClassName.push(this.isSelected()?"selectedBox":"");
+
+    return buildClassName.join(" ");
+  }
+
+  render(): JSX.Element {
+    let { boxText } = this.props;
+
     return (
-      <div className={`TextBox boxPos${boxPos} bg-${boxColor} text-${boxTextColor}`+(this.isSelected()?" selectedBox":"")} key={"test"} onClick={()=>{if(this.props.updateBoxSelector) this.props.updateBoxSelector({boxNum, row, col});}}>
-        <div className={`textContent`}> {boxText} </div>
+      <div className={this.setClassName()} onClick={()=>this.selectHandler()}>
+        <div className={`textContent`}> { boxText } </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state: any) => {
-  const boxSelector = getBoxSelector(state.settingStore);
-
-  return { boxSelector };
-};
-
-export default connect<{}, propActions, propsInterface>(
+export default connect<{}, propsActions, basePropsInterface>(
   mapStateToProps,
-  { updateBoxSelector }
+  mapDispaToProps
 )(TextBox);

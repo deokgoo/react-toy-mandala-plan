@@ -50,8 +50,12 @@ $textBoxSize: 180px;
   top: 66.6666%;
 }
 
-@keyframes pop{
-  50%  {transform: scale(0.8);}
+@keyframes pop {
+  50% {transform: scale(0.8);}
+}
+@keyframes selectAnimation {
+  from {border: 4px solid white;}
+  to {border: 4px solid red}
 }
 
 .textContent {
@@ -60,4 +64,5 @@ $textBoxSize: 180px;
 
 .selectedBox {
   border: 4px solid crimson;
+  animation: selectAnimation 1s infinite linear;
 }
