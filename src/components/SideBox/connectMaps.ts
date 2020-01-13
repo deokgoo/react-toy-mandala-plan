@@ -1,4 +1,4 @@
-import {basePropsInterface, connectStateInterface} from './types';
+import { basePropsInterface, connectStateInterface } from './types';
 import {
   getAllBoxText,
   getCoreColor,
@@ -13,8 +13,8 @@ export const mapStateToProps = (state: any, ownProps: basePropsInterface): conne
   const coreBoxColor = getCoreColor(state.boxStore, ownProps.boxNum);
   const sideTextColor = getSideTextColorList(state.boxStore, ownProps.boxNum);
   const coreTextColor = getCoreTextColor(state.boxStore, ownProps.boxNum);
-  const coreTexts = getCoreText(state.boxStore, ownProps.boxNum);
+  const coreText = getCoreText(state.boxStore, ownProps.boxNum);
   const allBoxTexts = getAllBoxText(state.boxStore);
 
-  return { sideBoxColors, sideTextColor, allBoxTexts, coreText: coreTexts, coreTextColor, coreBoxColor };
+  return { sideBoxColors, sideTextColor, allBoxTexts, coreText, coreTextColor, coreBoxColor };
 };
