@@ -11,7 +11,7 @@ class SideBox extends React.Component<propsInterface, stateInterface> {
   constructor(props: propsInterface) {
     super(props);
   }
-  BoxComponent = () => {
+  createTextBoxComponents = () => {
     if (!this.props.sideTextColor) return;
     if (!this.props.sideBoxColors) return;
     if (!this.props.allBoxTexts) return;
@@ -60,7 +60,7 @@ class SideBox extends React.Component<propsInterface, stateInterface> {
 
     return (
       <div className={`CoreBox coreBoxPos${boxNum}`}>
-        { this.BoxComponent() }
+        { this.createTextBoxComponents() }
       </div>
     );
   }
