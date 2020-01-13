@@ -18,6 +18,7 @@ class SideBox extends React.Component<propsInterface, stateInterface> {
 
     let { sideTextColor, sideBoxColors, allBoxTexts, boxNum } = this.props;
     let { coreBoxColor, coreTextColor, coreText } = this.props;
+    const coreNumber = 4;
     const elements = [];
 
     const createTextBoxFromCore = (i: number, j: number) => <TextBox
@@ -43,10 +44,11 @@ class SideBox extends React.Component<propsInterface, stateInterface> {
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
         elements.push(
-          i*3+j === 4 ? createTextBoxFromCore(i, j) : createTextBoxFromSideBox(i, j)
+          i*3+j === coreNumber ? createTextBoxFromCore(i, j) : createTextBoxFromSideBox(i, j)
         )
       }
     }
+
     return elements;
   };
 
