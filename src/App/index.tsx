@@ -13,9 +13,7 @@ const App: React.FC = () => {
             <Header />
           </div>
           <div className="col-7"><Main /></div>
-          <div className="col-4 bg-secondary h-100">
-            <Setting />
-          </div>
+          <Setting />
         </div>
       </div>
     </div>

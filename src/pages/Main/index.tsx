@@ -1,44 +1,29 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import './style.scss';
 import CoreBox from '../../components/CoreBox'
 import SideBox from '../../components/SideBox';
-import { connect } from 'react-redux';
 
-interface stateInterface {
-  map: Array<number>
-  mapText: Array<string>
-}
+const coreBoxNumber = 4;
 
-interface propsInterface {
+class MainPage extends React.Component {
+  boxComponents ():Array<ReactNode> {
+    let component:Array<ReactNode> = [];
 
-}
+    Array.from({length: 9}).forEach( (_, idx: number) => {
+      if(coreBoxNumber === idx) {
+        component.push(<CoreBox boxNum={idx} />)
+      }else {
+        component.push(<SideBox boxNum={idx} />)
+      }
+    });
 
-interface coreBoxInterface {
-  row: number,
-  col: number,
-}
-
-class MainPage extends React.Component<propsInterface, stateInterface> {
-  constructor(props: propsInterface) {
-    super(props);
-    this.state = {
-      map: [0,0,0,0,1,0,0,0,0],
-      mapText: ["","","","","","","","",""]
-    }
+    return component;
   }
 
   render(): JSX.Element {
     return (
       <div id="stageContainer">
-        <SideBox boxNum={0}></SideBox>
-        <SideBox boxNum={1}></SideBox>
-        <SideBox boxNum={2}></SideBox>
-        <SideBox boxNum={3}></SideBox>
-        <CoreBox  boxNum={4}></CoreBox>
-        <SideBox boxNum={5}></SideBox>
-        <SideBox boxNum={6}></SideBox>
-        <SideBox boxNum={7}></SideBox>
-        <SideBox boxNum={8}></SideBox>
+        { this.boxComponents() }
       </div>
     );
   }

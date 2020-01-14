@@ -18,6 +18,5 @@ export const mapStateToProps = (state: any) => {
       boxColor = getSideBoxColorList(state.boxStore, boxSelector.boxNum);
   }
 
-  console.log(coreBoxTextColorList, sideBoxTextColorList)
   return {...boxSelector, boxText, boxColor, coreBoxTextColorList, sideBoxTextColorList};
 };
