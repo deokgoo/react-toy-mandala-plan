@@ -11,13 +11,9 @@
 
 ### Installing
 
-use yarn
-
 ```
 yarn install
 ```
-
-use npm
 
 ```
 npm i
