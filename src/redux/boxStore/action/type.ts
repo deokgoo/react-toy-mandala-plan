@@ -1,2 +1,2 @@
 export const UPDATE_COLOR = "UPDATE_COLOR";
-export const UPDATE_TEXT = "TOGGLE_TODO";
+export const UPDATE_TEXT = "UPDATE_TEXT";
