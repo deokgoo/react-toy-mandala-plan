@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import TextBox from '../TextBox';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { mapStateToProps} from './connectMaps';
 import { basePropsInterface, mapStateToPropsInterface, stateInterface } from './types';
 import './style.scss'
