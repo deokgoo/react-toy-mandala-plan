@@ -1,18 +1,24 @@
 import React, {ReactNode} from 'react';
-import './style.scss';
+import { connect } from 'react-redux';
 import CoreBox from '../../components/CoreBox'
 import SideBox from '../../components/SideBox';
+import { mapStateToProps } from './connectMap';
+import './style.scss';
 
 const coreBoxNumber = 4;
 
-class MainPage extends React.Component {
+class MainPage extends React.Component<mapToProps> {
+  constructor(props: mapToProps) {
+    super(props);
+    console.log(props.coreAllText);
+  }
   boxComponents ():Array<ReactNode> {
     let component:Array<ReactNode> = [];
 
     Array.from({length: 9}).forEach( (_, idx: number) => {
       if(coreBoxNumber === idx) {
         component.push(<CoreBox boxNum={idx} />)
-      }else {
+      }else if(this.props.coreAllText[idx]) {
         component.push(<SideBox boxNum={idx} />)
       }
     });
@@ -29,4 +35,11 @@ class MainPage extends React.Component {
   }
 }
 
-export default MainPage;
+interface mapToProps {
+  coreAllText: Array<string>;
+}
+
+export default connect<mapToProps, {}>(
+    mapStateToProps,
+    {},
+)(MainPage);

@@ -1,12 +1,12 @@
 import { UPDATE_COLOR, UPDATE_TEXT } from "../action/type";
-import {Action, AnyAction} from "redux";
+import { AnyAction } from 'redux';
 import {color, stateInterface} from "./type";
 
 const initialState:stateInterface = {
   sideBoxColors: [
     color.green,
     color.blue,
-    color.red,
+    color.blue,
     color.yellow,
     color.green,
     color.sora,
@@ -15,14 +15,14 @@ const initialState:stateInterface = {
   ],
   coreBoxColors: [
     color.red,
-    color.white,
-    color.white,
-    color.white,
+    color.yellow,
+    color.yellow,
+    color.green,
     color.gray,
+    color.black,
+    color.blue,
+    color.red,
     color.sora,
-    color.white,
-    color.white,
-    color.white,
   ],
   sideBoxTextColors: [
     color.white,
@@ -46,12 +46,12 @@ const initialState:stateInterface = {
     color.white,
   ],
   boxTexts: [
-    ['hi', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
-    ['test!!!', '', '', '', 'test', 'sora', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
+    ['', '', 'sdffs', 'df', '', 'dsf', 'sdf', 'sdf', ''],
+    ['', '', '', '', 'dsfsd', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', '', ''],
@@ -68,9 +68,15 @@ export default (state = initialState, action: AnyAction) => {
       };
     }
     case UPDATE_TEXT: {
-      // const { content, row, col } = action.payload;
+      const { content, boxNum, row, col } = action.payload;
+      let afterState = state;
+      let afterBoxTests = state.boxTexts;
+
+      afterBoxTests[boxNum][row*3+col] = content;
+      afterState.boxTexts = afterBoxTests;
+
       return {
-        ...state,
+        ...afterState,
       };
     }
     default:

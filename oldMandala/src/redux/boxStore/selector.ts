@@ -30,6 +30,11 @@ export const getCoreText = (state: stateInterface, boxNum: number) => {
 
   return boxTexts[coreNumber][boxNum];
 };
+export const getCoreAllText = (state: stateInterface) => {
+  const { boxTexts } = state;
+
+  return boxTexts[coreNumber];
+};
 
 export const getCoreColor = (state: stateInterface, boxNum: number) => {
   const { coreBoxColors } = state;
