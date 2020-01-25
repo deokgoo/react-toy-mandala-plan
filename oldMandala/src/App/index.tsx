@@ -4,7 +4,7 @@ import Header from '../pages/Header'
 import './style.scss'
 import Setting from '../pages/Setting';
 
-const App: React.FC = () => {
+const Index: React.FC = () => {
   return (
     <div className="App">
       <div className="container-fluid h-100">
