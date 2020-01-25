@@ -40,7 +40,7 @@ const initialState:stateInterface = {
     color.white,
     color.white,
     color.white,
-    color.black,
+    color.yellow,
     color.white,
     color.white,
     color.white,

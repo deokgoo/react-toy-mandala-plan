@@ -39,7 +39,7 @@ class Setting extends React.Component<propsInterface>{
     }
   }
   render(): JSX.Element{
-    const {boxNum, row, col, boxText, boxColor } = this.props;
+    const { boxText, boxColor } = this.props;
     return (
       <div className="Setting container-fluid h-100">
         <div className="row w-100 justify-content-center">

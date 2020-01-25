@@ -23,7 +23,7 @@ export const getSelectBoxTextColor = (state: stateInterface) => {
   let sideBoxTextColorList = state.sideBoxTextColors;
 
   return { coreBoxTextColorList, sideBoxTextColorList }
-}
+};
 
 export const getCoreText = (state: stateInterface, boxNum: number) => {
   const { boxTexts } = state;
@@ -33,11 +33,13 @@ export const getCoreText = (state: stateInterface, boxNum: number) => {
 
 export const getCoreColor = (state: stateInterface, boxNum: number) => {
   const { coreBoxColors } = state;
+
   return coreBoxColors[boxNum];
 };
 
 export const getCoreTextColor = (state: stateInterface, boxNum: number) => {
   const { coreBoxTextColors } = state;
+
   return coreBoxTextColors[boxNum];
 };
 

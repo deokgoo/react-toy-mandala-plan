@@ -3,16 +3,17 @@ import {getBoxText, getCoreColor, getSelectBoxTextColor, getSideBoxColorList} fr
 import {color} from "../../redux/boxStore/reducer/type";
 
 export const mapStateToProps = (state: any) => {
+  const CORE_NUMBER = 4;
   const boxSelector = getBoxSelector(state.settingStore);
   const insideNum = boxSelector.row * 3 + boxSelector.col;
   const boxText = boxSelector.isSelect ? getBoxText(state.boxStore, boxSelector.boxNum, insideNum) : "";
-  const {coreBoxTextColorList, sideBoxTextColorList} = getSelectBoxTextColor(state.boxStore);
+  const { coreBoxTextColorList, sideBoxTextColorList } = getSelectBoxTextColor(state.boxStore);
   let boxColor: color;
-  if (boxSelector.boxNum === 4) {
-    // Core
+
+  if (boxSelector.boxNum === CORE_NUMBER) {
     boxColor = getCoreColor(state.boxStore, insideNum)
   } else {
-    if (insideNum === 4)
+    if (insideNum === CORE_NUMBER)
       boxColor = getCoreColor(state.boxStore, boxSelector.boxNum);
     else
       boxColor = getSideBoxColorList(state.boxStore, boxSelector.boxNum);
