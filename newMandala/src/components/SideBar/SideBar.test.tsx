@@ -29,7 +29,7 @@ test('renders Text', () => {
 });
 
 test('renders img & alt', () => {
-  const { getByAltText } = render(<SideBar title={"testTitle"}/>, container);
+  const { getByAltText } = render(<SideBar />, container);
   const imgElement = getByAltText(/logo/);
 
   expect(imgElement).toBeVisible();

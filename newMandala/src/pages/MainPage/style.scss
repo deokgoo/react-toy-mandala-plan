@@ -1,0 +1,14 @@
+.MainPage {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+@media screen and (max-width: 700px) {
+  .MainPage {
+    flex-direction: column;
+  }
+}
+
