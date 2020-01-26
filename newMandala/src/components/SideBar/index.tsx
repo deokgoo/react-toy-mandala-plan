@@ -21,13 +21,13 @@ class SideBar extends React.Component<types.propsInterface> {
             </h5>
           </div>
           <div className="row justify-content-center mt-4">
-            <h3 className="col-12 text-center text-white font-weight-bold p-0">  M </h3>
-            <h3 className="col-12 text-center text-white font-weight-bold p-0">  a </h3>
-            <h3 className="col-12 text-center text-white font-weight-bold p-0">  n </h3>
-            <h3 className="col-12 text-center text-white font-weight-bold p-0">  d </h3>
-            <h3 className="col-12 text-center text-white font-weight-bold p-0">  a </h3>
-            <h3 className="col-12 text-center text-white font-weight-bold p-0">  l </h3>
-            <h3 className="col-12 text-center text-white font-weight-bold p-0">  a </h3>
+            <h5 className="col-12 text-center text-white font-weight-bold p-0">  M </h5>
+            <h5 className="col-12 text-center text-white font-weight-bold p-0">  a </h5>
+            <h5 className="col-12 text-center text-white font-weight-bold p-0">  n </h5>
+            <h5 className="col-12 text-center text-white font-weight-bold p-0">  d </h5>
+            <h5 className="col-12 text-center text-white font-weight-bold p-0">  a </h5>
+            <h5 className="col-12 text-center text-white font-weight-bold p-0">  l </h5>
+            <h5 className="col-12 text-center text-white font-weight-bold p-0">  a </h5>
           </div>
         </div>
       </div>
