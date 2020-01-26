@@ -1,9 +1,11 @@
 .PlanBox {
-  background-color: #323232;
   padding: 0;
   margin: auto;
   width: 60vh;
   height: 60vh;
+  align-content: flex-start;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 300px) {
