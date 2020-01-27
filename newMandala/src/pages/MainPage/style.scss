@@ -3,7 +3,7 @@
   flex-direction: row;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   overflow: hidden;
   justify-content: center;
@@ -15,9 +15,9 @@
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 310px) {
   .MainPage {
-    width: 300px;
+    width: 310px;
     overflow: scroll;
   }
 }

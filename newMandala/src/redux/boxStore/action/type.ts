@@ -1,2 +1,3 @@
-export const UPDATE_COLOR = "UPDATE_COLOR";
+export const UPDATE_BOX_COLOR = "UPDATE_BOX_COLOR";
+export const UPDATE_TEXT_COLOR = "UPDATE_TEXT_COLOR";
 export const UPDATE_TEXT = "UPDATE_TEXT";

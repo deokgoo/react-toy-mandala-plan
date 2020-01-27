@@ -1,18 +1,18 @@
 export enum color {
-  red = 'danger',
-  blue = 'primary',
-  sora = 'info',
-  green = 'success',
-  white = 'light',
-  yellow = 'warning',
-  black = 'dark',
-  gray = 'secondary',
+  red = '#fc0303',
+  blue = '#0025fc',
+  lite_blue = '#15fcfa',
+  green = '#00fc45',
+  white = '#ffffff',
+  yellow = '#fceb00',
+  black = '#000000',
+  gray = '#626468',
 }
 
-export interface stateInterface {
+export interface boxStoreStateInterface {
   sideBoxColors: Array<color>,
   coreBoxColors: Array<color>,
   sideBoxTextColors: Array<color>,
   coreBoxTextColors: Array<color>
-  boxTexts: Array<Array<string>>,
+  allBoxTexts: Array<Array<string>>,
 }
