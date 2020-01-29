@@ -3,23 +3,21 @@ import { UPDATE_BOXSELECTOR } from '../action/type'
 import { selectInterface } from './type';
 
 const initialState:selectInterface = {
-  boxNum: 0,
-  col: 0,
-  row: 0,
+  box: {
+    boxNum: 0,
+    row: 0,
+    col: 0,
+  },
   isSelect: false,
 };
 
 export default (state = initialState, action: AnyAction) => {
-
   switch (action.type) {
     case UPDATE_BOXSELECTOR: {
-      const { boxNum, row, col, isSelect } = action.payload;
-      console.log(action.payload);
+      const { box } = action.payload;
       return {
-        boxNum,
-        row,
-        col,
-        isSelect
+        box,
+        isSelect: true
       };
     }
     default:
