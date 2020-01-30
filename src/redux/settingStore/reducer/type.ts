@@ -1,10 +1,10 @@
-export interface selectedBoxInterface {
+export interface selectedInfoInterface {
   boxNum: number,
   row: number,
   col: number
 }
 
 export interface selectInterface {
-  box : selectedBoxInterface,
+  selectedInfo : selectedInfoInterface,
   isSelect: boolean,
 }

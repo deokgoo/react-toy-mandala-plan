@@ -3,7 +3,7 @@ import { UPDATE_BOXSELECTOR } from '../action/type'
 import { selectInterface } from './type';
 
 const initialState:selectInterface = {
-  box: {
+  selectedInfo: {
     boxNum: 0,
     row: 0,
     col: 0,
