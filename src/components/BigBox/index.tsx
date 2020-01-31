@@ -2,29 +2,31 @@ import React from 'react';
 import * as types from './types';
 import './style.scss';
 
-import SmallBox from '../SmallBox/index';
+import { FillSmallBox, EmptySmallBox } from '../SmallBox/index';
 import {color} from "../../redux/boxStore/reducer/type";
 
 class BigBox extends React.Component<types.propsInterface> {
   constructor(props: types.propsInterface) {
     super(props)
   }
-
+  // first, props => bigBoxNum
   render() {
     return (
-      <div className="BigBox">
-        <SmallBox boxColor={color.green} textColor={color.white} boxContent={"hoge"}/>
-        <SmallBox boxColor={color.red} textColor={color.white} boxContent={"hoge"}/>
-        <SmallBox boxColor={color.blue} textColor={color.white} boxContent={"hoge"}/>
-        <SmallBox boxColor={color.lite_blue} textColor={color.white} boxContent={"hoge"}/>
-        <SmallBox boxColor={color.gray} textColor={color.white} boxContent={"sibal"}/>
-        <SmallBox boxColor={color.yellow} textColor={color.white} boxContent={"hoge"}/>
-        <SmallBox boxColor={color.lite_blue} textColor={color.white} boxContent={"hoge"}/>
-        <SmallBox boxColor={color.green} textColor={color.white} boxContent={"hoge"}/>
-        <SmallBox boxColor={color.blue} textColor={color.white} boxContent={"hoge"}/>
+      <div className="FillBigBox">
+        <FillSmallBox boxColor={color.green} textColor={color.white} boxContent={"hoge"}/>
+        <FillSmallBox boxColor={color.red} textColor={color.white} boxContent={"hoge"}/>
+        <FillSmallBox boxColor={color.blue} textColor={color.white} boxContent={"hoge"}/>
+        <FillSmallBox boxColor={color.lite_blue} textColor={color.white} boxContent={"hoge"}/>
+        <EmptySmallBox />
+        <FillSmallBox boxColor={color.yellow} textColor={color.white} boxContent={"hoge"}/>
+        <FillSmallBox boxColor={color.lite_blue} textColor={color.white} boxContent={"hoge"}/>
+        <FillSmallBox boxColor={color.green} textColor={color.white} boxContent={"hoge"}/>
+        <FillSmallBox boxColor={color.blue} textColor={color.white} boxContent={"hoge"}/>
       </div>
     );
   }
 }
 
-export default BigBox;
+export const FillBigBox = BigBox;
+
+export const EmptyBigBox = () => <div className="EmptyBigBox" />;

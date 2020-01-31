@@ -2,7 +2,7 @@ import React from 'react';
 import * as types from './types';
 import './style.scss';
 
-import BigBox from '../BigBox';
+import { FillBigBox, EmptyBigBox } from '../BigBox';
 
 class PlanBox extends React.Component<types.propsInterface> {
   constructor(props: types.propsInterface) {
@@ -12,15 +12,15 @@ class PlanBox extends React.Component<types.propsInterface> {
   render() {
     return (
       <div className="PlanBox">
-        <BigBox />
-        <BigBox />
-        <BigBox />
-        <BigBox />
-        <BigBox />
-        <BigBox />
-        <BigBox />
-        <BigBox />
-        <BigBox />
+        <EmptyBigBox />
+        <EmptyBigBox />
+        <EmptyBigBox />
+        <EmptyBigBox />
+        <FillBigBox />
+        <EmptyBigBox />
+        <EmptyBigBox />
+        <EmptyBigBox />
+        <EmptyBigBox />
       </div>
     )
   }

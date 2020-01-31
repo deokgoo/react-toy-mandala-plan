@@ -1,4 +1,4 @@
-import React, {CSSProperties, StyleHTMLAttributes} from 'react';
+import React, { CSSProperties } from 'react';
 import { connect } from 'react-redux';
 import * as types from './types';
 import './style.scss';
@@ -21,14 +21,18 @@ class SmallBox extends React.Component<totalPropsInterface, types.stateInterface
       color: textColor.toString()
     };
     return (
-      <div className="SmallBox" style={smallBoxStyle}>
-        {content}
+      <div className="FillSmallBox" style={smallBoxStyle}>
+        <div className="FillSmallBox__content-box">
+          {content}
+        </div>
       </div>
     )
   }
 }
 
-export default connect(
+export const FillSmallBox = connect(
   mapStateToProps,
   mapDispatchToProps
 )(SmallBox);
+
+export const EmptySmallBox = () => <div className="EmptySmallBox" />;
