@@ -1,32 +1,37 @@
-import React from 'react';
+import React, {ReactComponentElement} from 'react';
 import * as types from './types';
 import './style.scss';
 
-import { FillSmallBox, EmptySmallBox } from '../SmallBox/index';
-import {color} from "../../redux/boxStore/reducer/type";
+import { FillSmallBox } from '../SmallBox/index';
+import { connect } from 'react-redux';
+import { mapStateToProps } from './connectMap';
 
 class BigBox extends React.Component<types.propsInterface> {
-  constructor(props: types.propsInterface) {
-    super(props)
+
+  setSmallBox() {
+    let { bigBoxNum, coreBoxTexts } = this.props;
+    let components:Array<ReactComponentElement<any>> = [];
+
+    coreBoxTexts.forEach((content, idx) => {
+      let row = Math.floor(idx/3);
+      let col = idx%3;
+      components.push(<FillSmallBox bigBoxNum={bigBoxNum} row={row} col={col} key={idx}/>)
+    });
+
+    return components;
   }
-  // first, props => bigBoxNum
+
   render() {
     return (
       <div className="FillBigBox">
-        <FillSmallBox boxColor={color.green} textColor={color.white} boxContent={"hoge"}/>
-        <FillSmallBox boxColor={color.red} textColor={color.white} boxContent={"hoge"}/>
-        <FillSmallBox boxColor={color.blue} textColor={color.white} boxContent={"hoge"}/>
-        <FillSmallBox boxColor={color.lite_blue} textColor={color.white} boxContent={"hoge"}/>
-        <EmptySmallBox />
-        <FillSmallBox boxColor={color.yellow} textColor={color.white} boxContent={"hoge"}/>
-        <FillSmallBox boxColor={color.lite_blue} textColor={color.white} boxContent={"hoge"}/>
-        <FillSmallBox boxColor={color.green} textColor={color.white} boxContent={"hoge"}/>
-        <FillSmallBox boxColor={color.blue} textColor={color.white} boxContent={"hoge"}/>
+        {this.setSmallBox()}
       </div>
     );
   }
 }
 
-export const FillBigBox = BigBox;
+export const FillBigBox = connect(
+  mapStateToProps
+)(BigBox);
 
 export const EmptyBigBox = () => <div className="EmptyBigBox" />;

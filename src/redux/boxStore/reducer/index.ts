@@ -16,7 +16,7 @@ const initialState:boxStoreStateInterface = {
   coreBoxColors: [
     color.red,
     color.yellow,
-    color.yellow,
+    color.red,
     color.green,
     color.gray,
     color.black,
@@ -45,17 +45,17 @@ const initialState:boxStoreStateInterface = {
     color.white,
     color.white,
   ],
-  allBoxTexts: [
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', 'sdffs', 'df', '', 'dsf', 'sdf', 'sdf', ''],
-    ['', '', '', '', 'dsfsd', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
+  sideBoxTexts: [
+    ['', 'ha', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', ''],
   ],
+  coreBoxTexts: ['test', '', '', 'test', 'core', 'test', 'test', '', 'test']
 };
 
 const CORE_NUMBER = 4;
@@ -88,8 +88,15 @@ export default (state = initialState, action: AnyAction) => {
 
     case UPDATE_TEXT: {
       const { content, boxNum, row, col } = action.payload;
+      let smallBoxNum = row*3 + col;
+      let boxNumCopy = boxNum;
 
-      state.allBoxTexts[boxNum][row*3+col] = content;
+      if(boxNum === CORE_NUMBER) {
+        state.coreBoxTexts[smallBoxNum] = content;
+      }else {
+        if(boxNumCopy>4) boxNumCopy--;
+        state.sideBoxTexts[boxNumCopy][smallBoxNum] = content;
+      }
 
       return state;
     }

@@ -14,5 +14,6 @@ export interface boxStoreStateInterface {
   coreBoxColors: Array<color>,
   sideBoxTextColors: Array<color>,
   coreBoxTextColors: Array<color>
-  allBoxTexts: Array<Array<string>>,
+  sideBoxTexts: Array<Array<string>>,
+  coreBoxTexts: Array<string>,
 }

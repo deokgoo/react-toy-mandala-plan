@@ -3,9 +3,6 @@ import * as types from './types';
 import './style.scss';
 
 class SideBar extends React.Component<types.propsInterface> {
-  constructor(props: types.propsInterface) {
-    super(props)
-  }
   render() {
     return (
       <div className={"SideBar"}>
