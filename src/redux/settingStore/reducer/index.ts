@@ -14,9 +14,9 @@ const initialState:selectInterface = {
 export default (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case UPDATE_BOXSELECTOR: {
-      const { box } = action.payload;
+      const { selectedInfo } = action.payload;
       return {
-        box,
+        selectedInfo,
         isSelect: true
       };
     }

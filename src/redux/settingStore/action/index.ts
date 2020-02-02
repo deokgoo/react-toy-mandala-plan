@@ -1,11 +1,11 @@
 import { UPDATE_BOXSELECTOR } from './type';
 import { selectedInfoInterface } from '../reducer/type';
 
-export const updateBoxSelector = (data: { box: selectedInfoInterface }) => {
+export const updateBoxSelector = (selectedInfo: selectedInfoInterface) => {
   return ({
     type: UPDATE_BOXSELECTOR,
     payload: {
-      box: data.box,
+      selectedInfo: selectedInfo,
       isSelect: true
     }
 })};

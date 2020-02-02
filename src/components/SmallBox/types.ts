@@ -1,7 +1,7 @@
 import { selectedInfoInterface } from '../../redux/settingStore/reducer/type'
 import { color } from '../../redux/boxStore/reducer/type';
 
-export type propsInterface = ourPropsInterface & stateInterface
+export type propsInterface = ourPropsInterface & stateInterface & mapDispatchToPropsInterface
 
 export interface ourPropsInterface {
   bigBoxNum: number,
@@ -17,5 +17,5 @@ export interface stateInterface {
 }
 
 export interface mapDispatchToPropsInterface {
-  updateBoxSelector?: (data: {box: selectedInfoInterface}) => any,
+  updateBoxSelector: (data: selectedInfoInterface) => any,
 }
