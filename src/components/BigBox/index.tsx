@@ -3,16 +3,33 @@ import * as types from './types';
 import './style.scss';
 
 import { FillSmallBox } from '../SmallBox/index';
-import { connect } from 'react-redux';
-import { mapStateToProps } from './connectMap';
 
-class BigBox extends React.Component<types.propsInterface> {
+class BigBox extends React.Component<types.propsInterface, types.propsInterface> {
+  constructor(props: types.propsInterface) {
+    super(props);
+
+    this.state = {
+      ...this.props
+    }
+  }
+
+  componentDidUpdate(prevProps: any, prevState: any): void {
+    console.log("hoho2")
+    if(this.state.coreBoxTexts != this.props.coreBoxTexts)
+    this.setState(() => {
+      return {
+        ...this.props
+      }
+    })
+  }
 
   setSmallBox() {
-    let { bigBoxNum, coreBoxTexts } = this.props;
+    let { bigBoxNum, coreBoxTexts } = this.state;
+    if(!coreBoxTexts || !coreBoxTexts[bigBoxNum])
+      if(bigBoxNum!==4 || !coreBoxTexts) return;
     let components:Array<ReactComponentElement<any>> = [];
 
-    coreBoxTexts.forEach((content, idx) => {
+    coreBoxTexts.forEach((_, idx) => {
       let row = Math.floor(idx/3);
       let col = idx%3;
       components.push(<FillSmallBox bigBoxNum={bigBoxNum} row={row} col={col} key={idx}/>)
@@ -30,8 +47,4 @@ class BigBox extends React.Component<types.propsInterface> {
   }
 }
 
-export const FillBigBox = connect(
-  mapStateToProps
-)(BigBox);
-
-export const EmptyBigBox = () => <div className="EmptyBigBox" />;
+export default BigBox;

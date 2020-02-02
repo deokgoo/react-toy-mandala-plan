@@ -4,49 +4,49 @@ import { color, boxStoreStateInterface } from "./type";
 
 const initialState:boxStoreStateInterface = {
   sideBoxColors: [
-    color.green,
-    color.blue,
-    color.blue,
-    color.yellow,
-    color.green,
-    color.lite_blue,
-    color.blue,
-    color.yellow,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
+    color.white,
   ],
   coreBoxColors: [
-    color.red,
-    color.yellow,
-    color.red,
-    color.green,
     color.gray,
-    color.black,
-    color.blue,
-    color.red,
-    color.lite_blue,
+    color.gray,
+    color.gray,
+    color.gray,
+    color.white,
+    color.gray,
+    color.gray,
+    color.gray,
+    color.gray,
   ],
   sideBoxTextColors: [
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
-    color.white,
+    color.black,
+    color.black,
+    color.black,
+    color.black,
+    color.black,
+    color.black,
+    color.black,
+    color.black,
   ],
   coreBoxTextColors: [
     color.white,
     color.white,
     color.white,
     color.white,
+    color.black,
     color.white,
-    color.yellow,
     color.white,
     color.white,
     color.white,
   ],
   sideBoxTexts: [
-    ['', 'ha', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', ''],
@@ -55,7 +55,7 @@ const initialState:boxStoreStateInterface = {
     ['', '', '', '', '', '', '', ''],
     ['', '', '', '', '', '', '', ''],
   ],
-  coreBoxTexts: ['test', '', '', 'test', 'core', 'test', 'test', '', 'test']
+  coreBoxTexts: ['', '', '', '', '', '', '', '', '']
 };
 
 const CORE_NUMBER = 4;
@@ -64,41 +64,59 @@ export default (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case UPDATE_BOX_COLOR: {
       const { boxNum, row, col, color } = action.payload;
+      let smallBoxNum = row*3 + col;
+      let boxNumCopy = boxNum;
+      let newState = {
+        ...state
+      };
 
       if(boxNum === CORE_NUMBER) {
-        state.coreBoxColors[row*3+col] = color;
+        newState.coreBoxColors[smallBoxNum] = color;
       }else {
-        state.sideBoxColors[row*3+col] = color;
+        if(boxNum>4) boxNumCopy--;
+        newState.sideBoxColors[boxNumCopy] = color;
       }
 
-      return state;
+      return newState;
     }
 
     case UPDATE_TEXT_COLOR: {
       const { boxNum, row, col, color } = action.payload;
+      let smallBoxNum = row*3 + col;
+      let boxNumCopy = boxNum;
+      let newState = {
+        ...state
+      };
 
       if(boxNum === CORE_NUMBER) {
-        state.coreBoxTextColors[row*3+col] = color;
+        newState.coreBoxTextColors[smallBoxNum] = color;
       }else {
-        state.sideBoxTextColors[row*3+col] = color;
+        if(boxNum>4) boxNumCopy--;
+        newState.sideBoxTextColors[boxNumCopy] = color;
       }
 
-      return state;
+      return newState;
     }
 
     case UPDATE_TEXT: {
-      const { content, boxNum, row, col } = action.payload;
+      const { boxNum, row, col, content } = action.payload;
       let smallBoxNum = row*3 + col;
       let boxNumCopy = boxNum;
+      let newState:any = {};
 
       if(boxNum === CORE_NUMBER) {
-        state.coreBoxTexts[smallBoxNum] = content;
+        let copyTexts:any = [...state.coreBoxTexts];
+        copyTexts[smallBoxNum] = content;
+        newState.coreBoxTexts = copyTexts;
       }else {
         if(boxNumCopy>4) boxNumCopy--;
-        state.sideBoxTexts[boxNumCopy][smallBoxNum] = content;
+        if(smallBoxNum>4) smallBoxNum--;
+        let copyTexts:any = [...state.sideBoxTexts];
+        copyTexts[boxNumCopy][smallBoxNum] = content;
+        newState.sideBoxTexts = copyTexts;
       }
 
-      return state;
+      return Object.assign({}, state, newState )
     }
 
     default:

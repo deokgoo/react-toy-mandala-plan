@@ -1,8 +1,98 @@
+$lineColor: white;
+$inputColor: white;
+$inputBoxColor: #464646;
+
 .SettingBar {
   background-color: #323232;
   padding: 0;
   width: 30vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .SettingBar__title {
+    width:100%;
+    height: 30px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  .SettingBar__preview {
+    height: 200px;
+    width: 200px;
+    margin: 10px auto;
+    font-size: 50px;
+    display: flex;
+    .SettingBar__preview__text {
+      text-align: center;
+      margin: auto;
+      overflow: scroll;
+
+      word-break: keep-all;
+    }
+  }
+
+  .base_title {
+    color: white;
+    margin: 5px 0;
+  }
+  .base_textInput {
+    color: $inputColor;
+    background-color: $inputBoxColor;
+    border: 0;
+    border-radius: 5px;
+  }
+
+  .content-container {
+    width: 80%;
+    margin: 0 auto;
+    .content-context-row {
+      display: flex;
+      flex-direction: column;
+      .content-context-row__title { @extend .base_title; }
+      .content-context-row__textInput { @extend .base_textInput; }
+    }
+    .content-row {
+      display: flex;
+      justify-content: space-between;
+      .content-row__subTitle { @extend .base_title; }
+      .colorInput {
+        height: 50%;
+        width: 50%;
+        margin-top: auto;
+        margin-bottom: auto;
+        line-height: 10px;
+        border-radius: 5px;
+        background-color: $inputBoxColor;
+        color: $inputColor;
+        border: 0;
+      }
+    }
+    .content-container__line {
+      background-color: $lineColor;
+      height: 1px;
+      width: 100%;
+      margin: 5px auto;
+    }
+    .content-container-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+      button {
+        background-color: #1b1924;
+        border: 0;
+        border-radius: 5px;
+        color: white;
+        margin: auto 10px;
+      }
+    }
+  }
+  .line {
+    background-color: $lineColor;
+    height: 1px;
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: 700px) {

@@ -1,4 +1,4 @@
 export interface propsInterface {
   bigBoxNum: number,
-  coreBoxTexts: Array<string>
+  coreBoxTexts?: Array<string>
 }

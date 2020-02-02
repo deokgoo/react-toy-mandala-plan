@@ -7,13 +7,17 @@ export interface ourPropsInterface {
   bigBoxNum: number,
   row: number,
   col: number,
-  box: stateInterface
+  box: {
+    bgColor: color
+    textColor: color,
+    boxContent: string,
+  }
 }
 
 export interface stateInterface {
-  boxContent: string,
-  textColor: color,
   bgColor: color
+  textColor: color,
+  boxContent: string
 }
 
 export interface mapDispatchToPropsInterface {

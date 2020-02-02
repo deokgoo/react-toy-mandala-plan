@@ -8,4 +8,5 @@
 }
 .EmptyBigBox {
   @extend .FillBigBox;
+  border: 0;
 }

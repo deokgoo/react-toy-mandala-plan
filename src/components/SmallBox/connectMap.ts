@@ -17,8 +17,8 @@ export const mapStateToProps = (state: any, ourProps: any) => {
 
   let box:stateInterface = {
     bgColor: color.white,
-    boxContent: "",
-    textColor: color.black
+    textColor: color.black,
+    boxContent: ""
   };
 
   if(bigBoxNum === CORE_BOX_NUM) {
@@ -39,7 +39,6 @@ export const mapStateToProps = (state: any, ourProps: any) => {
       box.boxContent = getSideBoxTexts(state.boxStore)[bigBoxNum][smallBoxNum];
     }
   }
-
   return { box };
 };
 
